@@ -1,0 +1,137 @@
+{
+  "$schema": "https://ograf.ebu.io/v1/specification/json-schemas/graphics/schema.json",
+  "id": "match-id-glassmorphism",
+  "version": "1.0.0",
+  "name": "Glassmorphism Match ID",
+  "description": "A glassmorphism-style match identification card with two teams, their logos, match title, location and time.",
+  "author": {
+    "name": "Johans graphics stash"
+  },
+  "main": "match-id.js",
+  "supportsRealTime": true,
+  "supportsNonRealTime": false,
+  "stepCount": 1,
+  "schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "title": {
+        "type": "string",
+        "title": "Match Title",
+        "description": "For example \"Matchday 1\" or \"Round 10\".",
+        "default": "Matchday 1"
+      },
+      "homeTeam": {
+        "type": "object",
+        "title": "Home Team",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Team Name",
+            "default": "Team Biscuit"
+          },
+          "logo": {
+            "type": "string",
+            "title": "Logo URL",
+            "description": "URL of the team logo. Relative URLs are resolved against the graphic's folder.",
+            "default": "assets/team-biscuit.svg",
+            "gddType": "file-path/image-path"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "awayTeam": {
+        "type": "object",
+        "title": "Away Team",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Team Name",
+            "default": "Team Retriever"
+          },
+          "logo": {
+            "type": "string",
+            "title": "Logo URL",
+            "description": "URL of the team logo. Relative URLs are resolved against the graphic's folder.",
+            "default": "assets/team-retriever.svg",
+            "gddType": "file-path/image-path"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "location": {
+        "type": "string",
+        "title": "Location",
+        "default": "Kennel Park Stadium"
+      },
+      "time": {
+        "type": "string",
+        "title": "Time",
+        "default": "Sat 14 Nov · 20:45"
+      },
+      "accentColor": {
+        "type": "string",
+        "title": "Accent Color",
+        "default": "#ff8c00",
+        "gddType": "color-rrggbb",
+        "pattern": "^#[0-9a-f]{6}$"
+      }
+    },
+    "required": [
+      "homeTeam",
+      "awayTeam"
+    ]
+  },
+  "renderRequirements": [
+    {
+      "resolution": {
+        "width": {
+          "ideal": 1920
+        },
+        "height": {
+          "ideal": 1080
+        }
+      },
+      "frameRate": {
+        "ideal": 50
+      },
+      "accessToPublicInternet": {
+        "ideal": true
+      }
+    }
+  ],
+  "thumbnails": [
+    {
+      "file": "thumbnails/1280x720.png",
+      "resolution": {
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "file": "thumbnails/1280x720-cropped.png",
+      "resolution": {
+        "width": 820,
+        "height": 354
+      }
+    }
+  ],
+  "actionDurations": [
+    {
+      "type": "playAction",
+      "duration": 1161
+    },
+    {
+      "type": "updateAction",
+      "duration": 174
+    },
+    {
+      "type": "stopAction",
+      "duration": 677
+    }
+  ]
+}

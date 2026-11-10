@@ -1,0 +1,155 @@
+{
+  "$schema": "https://ograf.ebu.io/v1/specification/json-schemas/graphics/schema.json",
+  "id": "team-presentation-glassmorphism",
+  "version": "1.0.0",
+  "name": "Glassmorphism Team Presentation",
+  "description": "A glassmorphism-style team presentation. Step 1 shows the squad list beside a large team logo; each following step features the next player's photo. After the last player the team logo returns. The graphic is only taken out on stop.",
+  "author": {
+    "name": "Johans graphics stash"
+  },
+  "main": "team-presentation.js",
+  "supportsRealTime": true,
+  "supportsNonRealTime": false,
+  "stepCount": -1,
+  "schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "teamName": {
+        "type": "string",
+        "title": "Team Name",
+        "default": "Team Biscuit"
+      },
+      "subtitle": {
+        "type": "string",
+        "title": "Subtitle",
+        "default": "Starting Lineup"
+      },
+      "logo": {
+        "type": "string",
+        "title": "Team Logo URL",
+        "description": "URL of the team logo. Relative URLs are resolved against the graphic's folder.",
+        "default": "assets/team-biscuit.svg",
+        "gddType": "file-path/image-path"
+      },
+      "players": {
+        "type": "array",
+        "title": "Players",
+        "items": {
+          "type": "object",
+          "properties": {
+            "number": {
+              "type": "string",
+              "title": "Jersey Number"
+            },
+            "name": {
+              "type": "string",
+              "title": "Player Name"
+            },
+            "photo": {
+              "type": "string",
+              "title": "Photo URL",
+              "description": "URL of the player photo. Relative URLs are resolved against the graphic's folder.",
+              "gddType": "file-path/image-path"
+            }
+          },
+          "required": [
+            "number",
+            "name"
+          ]
+        },
+        "default": [
+          {
+            "number": "1",
+            "name": "Max Barkley",
+            "photo": "assets/player-1.svg"
+          },
+          {
+            "number": "4",
+            "name": "Luna Woofson",
+            "photo": "assets/player-2.svg"
+          },
+          {
+            "number": "7",
+            "name": "Biscuit Jones",
+            "photo": "assets/player-3.svg"
+          },
+          {
+            "number": "10",
+            "name": "Bailey Pawsome",
+            "photo": "assets/player-4.svg"
+          },
+          {
+            "number": "11",
+            "name": "Rocky Fetcher",
+            "photo": "assets/player-5.svg"
+          },
+          {
+            "number": "23",
+            "name": "Daisy Howler",
+            "photo": "assets/player-6.svg"
+          }
+        ]
+      },
+      "accentColor": {
+        "type": "string",
+        "title": "Accent Color",
+        "default": "#ff8c00",
+        "gddType": "color-rrggbb",
+        "pattern": "^#[0-9a-f]{6}$"
+      }
+    },
+    "required": [
+      "teamName",
+      "players"
+    ]
+  },
+  "renderRequirements": [
+    {
+      "resolution": {
+        "width": {
+          "ideal": 1920
+        },
+        "height": {
+          "ideal": 1080
+        }
+      },
+      "frameRate": {
+        "ideal": 50
+      },
+      "accessToPublicInternet": {
+        "ideal": true
+      }
+    }
+  ],
+  "thumbnails": [
+    {
+      "file": "thumbnails/1280x720.png",
+      "resolution": {
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "file": "thumbnails/1280x720-cropped.png",
+      "resolution": {
+        "width": 1158,
+        "height": 644
+      }
+    }
+  ],
+  "actionDurations": [
+    {
+      "type": "playAction",
+      "duration": 1360
+    },
+    {
+      "type": "updateAction",
+      "duration": 195
+    },
+    {
+      "type": "stopAction",
+      "duration": 682
+    }
+  ]
+}
